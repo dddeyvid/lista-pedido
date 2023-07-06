@@ -4,6 +4,7 @@ import InputText from '../../components/InputText';
 import { View, StyleSheet, SafeAreaView } from 'react-native';
 import { Height, Width } from "../../constants/dimensions";
 import ButtonT from '../../components/Button/Button';
+import CustomCard from '../../components/Card/Card';
 
 export default function Insert({navigation}){
     
@@ -18,7 +19,7 @@ export default function Insert({navigation}){
     function confirmPedido(){
         goToWish()
     }
-
+ 
     function goToWish(){
         navigation.navigate("WishList")
     }
@@ -26,25 +27,40 @@ export default function Insert({navigation}){
     return(
         
         <SafeAreaView style={styles.container}>
+                <View style={styles.cardContainer}>
+                    <CustomCard 
+                        style={styles.card}
+                        mode={'outlined'}
+                        title={"MarlBoro Red"}
+                        source={{ uri: 'https://encurtador.com.br/jtDHJ' }}
+                        styleSource={styles.source}
+                        /> 
+                    <CustomCard 
+                        style={styles.card}
+                        mode={'outlined'}
+                        title={"MarlBoro Red"}
+                        source={{ uri: 'https://abrir.link/J4UHT' }}
+                        styleSource={styles.source}
+                        /> 
+                <ButtonT 
+                    text={"Confirmar"}
+                    mode={"elevated"}
+                    style={styles.confirm}
+                    textStyle={styles.textWhite}
+                    action={confirmPedido}
+                    />
 
+                  <ButtonT 
+                    text={"Cancelar"}
+                    mode={"elevated"}
+                    style={styles.cancel}
+                    textStyle={styles.textBlack}
+                    action={cancelPedido}
+                    />
+                </View>
+            <View style={styles.inputArea}>
 
-        <View style={styles.inputArea}>
-        <ButtonT 
-            text={"Confirmar"}
-            mode={"elevated"}
-            style={styles.confirm}
-            textStyle={styles.textWhite}
-            action={confirmPedido}
-            />
-          
-          <ButtonT 
-            text={"Cancelar"}
-            mode={"elevated"}
-            style={styles.cancel}
-            textStyle={styles.textBlack}
-            action={cancelPedido}
-            />
-        </View>
+                </View>
         
       </SafeAreaView>
     )
@@ -59,11 +75,12 @@ const styles = StyleSheet.create({
     },
     inputArea:{
       padding: 16,
-      width: Width*0.8 
+      width: Width*0.8,
+      
     },
     confirm:{
       backgroundColor: "#DC143C",
-      marginTop: 100,
+      marginTop: 10,
     },
     cancel:{
       borderColor: "#DC143C",
@@ -77,5 +94,13 @@ const styles = StyleSheet.create({
     },
     textWhite: {
       color: "#FFF",
+    },
+    cardContainer: {
+        marginTop: 40,
+    },
+    card: {
+        aspectRatio: 1, 
+        marginBottom: 10,
+        marginTop: 10,
     },
   })
