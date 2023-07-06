@@ -7,12 +7,12 @@ const InputText = ({label, style}) => {
 
   return (
     <View style={style}>
-    <TextInput
-      label={label}
-      value={text}
-      onChangeText={text => setText(text)}
-      mode="outlined"
-    />
+      <TextInput
+        label={label}
+        value={text}
+        onChangeText={text => setText(text)}
+        mode="outlined"
+      />
   </View>
   )
 }
