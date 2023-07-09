@@ -1,13 +1,14 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text } from 'react-native-paper';
 import InputText from '../../components/InputText';
-import { View, StyleSheet, SafeAreaView } from 'react-native';
+import { View, StyleSheet, SafeAreaView, ScrollView, TouchableOpacity } from 'react-native';
 import { Height, Width } from "../../constants/dimensions";
 import ButtonT from '../../components/Button/Button';
 import CustomCard from '../../components/Card/Card';
 
 export default function Insert({navigation}){
-    
+
+ 
     function cancelPedido(){
         goToHome()
     }
@@ -28,7 +29,9 @@ export default function Insert({navigation}){
         
         <SafeAreaView style={styles.container}>
                 <View style={styles.cardContainer}>
+                   <ScrollView>
                     <CustomCard 
+                        onPress={''}
                         style={styles.card}
                         mode={'outlined'}
                         title={"MarlBoro Red"}
@@ -41,26 +44,41 @@ export default function Insert({navigation}){
                         title={"MarlBoro Red"}
                         source={{ uri: 'https://abrir.link/J4UHT' }}
                         styleSource={styles.source}
+                        />
+                                            <CustomCard 
+                        style={styles.card}
+                        mode={'outlined'}
+                        title={"MarlBoro Red"}
+                        source={{ uri: 'https://encurtador.com.br/jtDHJ' }}
+                        styleSource={styles.source}
                         /> 
-                <ButtonT 
-                    text={"Confirmar"}
-                    mode={"elevated"}
-                    style={styles.confirm}
-                    textStyle={styles.textWhite}
-                    action={confirmPedido}
-                    />
+                    <CustomCard 
+                        style={styles.card}
+                        mode={'outlined'}
+                        title={"MarlBoro Red"}
+                        source={{ uri: 'https://abrir.link/J4UHT' }}
+                        styleSource={styles.source}
+                        />  
+                    </ScrollView>
+                    <View style={styles.inputArea}>
+                      <ButtonT 
+                        text={"Confirmar"}
+                        mode={"elevated"}
+                        style={styles.confirm}
+                        textStyle={styles.textWhite}
+                        action={confirmPedido}
+                        />
 
-                  <ButtonT 
-                    text={"Cancelar"}
-                    mode={"elevated"}
-                    style={styles.cancel}
-                    textStyle={styles.textBlack}
-                    action={cancelPedido}
-                    />
+                      <ButtonT 
+                        text={"Cancelar"}
+                        mode={"elevated"}
+                        style={styles.cancel}
+                        textStyle={styles.textBlack}
+                        action={cancelPedido}
+                        />
+                    </View> 
                 </View>
-            <View style={styles.inputArea}>
 
-                </View>
         
       </SafeAreaView>
     )
@@ -81,6 +99,10 @@ const styles = StyleSheet.create({
     confirm:{
       backgroundColor: "#DC143C",
       marginTop: 10,
+      position: 'absolute',
+      right: 0,
+      left: 0,
+      bottom: 72
     },
     cancel:{
       borderColor: "#DC143C",
@@ -88,6 +110,10 @@ const styles = StyleSheet.create({
       backgroundColor: "#fff",
       color: "#000000",
       marginTop: 5,
+      position: 'absolute',
+      right: 0,
+      left: 0,
+      bottom: 28
     },
     textBlack: {
       color: "#000000",
@@ -103,4 +129,5 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         marginTop: 10,
     },
+
   })
